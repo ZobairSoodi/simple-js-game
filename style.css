@@ -6,6 +6,10 @@
     font-family: hack;
     src: url(fonts/hackbot/HackbotFreeTrial.ttf);
 }
+@font-face {
+    font-family: code;
+    src: url(fonts/code_7x5/Code\ 7x5.ttf);
+}
 body{
     margin: 0;
     padding: 0;
@@ -35,16 +39,26 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
-    justify-content: flex-start;
+    
 }
 #danger{
     font-family: danger;
     font-size: 50px;
     color: red;
-    margin-top: 40px;
+    margin-bottom: 40px;
+
 }
 #descr{
-    font-family: hack;
-    font-weight: lighter;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    font-family: code;
     color: rgb(5, 151, 5);
+}
+#hint{
+    text-align: center;
+    font-family: code;
+    font-size: 15px;
+    color: rgb(5, 151, 5);
+
 }
