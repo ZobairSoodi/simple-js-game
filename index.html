@@ -11,20 +11,96 @@
     <video autoplay muted loop id="bg_vid" >
         <source src="images/31276859_4k-closeup-futuristic-display-of-binary-code-1-s-and-0-s-looping_by_butlerm_preview.mp4" type="video/mp4">
     </video>
+    <div id="lose">
+        <div id="access_denied">
+            ACCESS DENIED
+        </div>
+        <button id="try_again" onclick="tryAgain()">TRY AGAIN</button>
+    </div>
     <div id="container">
         <div id="body">
+            <div id="lives" >
+                <img src="images/danger_red.png">
+                <span id="lives_span">
+                    10/10
+                </span>
+            </div>
             <span id="danger">
                 DANGER
             </span>
             <span id="descr">
-                You have 10 attempts to guess the right
-                number or else you'll get <span style="font-weight: bold;">CAUGHT</span>;
+                /* You have 10 attempts to guess the right
+                number in order to hack into te system, or else you'll get 
+                 <span style="font-weight: bold;">CAUGHT */</span>;
             </span>
             <span id="hint">
-                Hint: ithe number is between 1 and 100;
+                /* Hint: the number is between 1 and 100; */
             </span>
-
+            <div class="input_div">
+                <input type="text" id="guess_input">
+                <input type="button" id="guess_btn" value="Hack" onclick="guess()">
+            </div>
+            <div class="output_div"> 
+                <p id="error_par">the number you're looking for is bigger</p>
+                <p id="success_par">you're in!</p>
+            </div>
         </div>
     </div>
+
+    <script>
+
+        var lives_span = document.getElementById('lives_span');
+        var guess_input = document.getElementById('guess_input');
+        var error_par = document.getElementById('error_par');
+        var success_par = document.getElementById('success_par');
+
+        var attempts = 10;
+        var random_num = Math.floor(Math.random()*100)+1;
+
+        function guess(){
+            if(guess_input.value==random_num){
+                if(attempts>=9){
+                    success_par.innerHTML = "You're a legend!!!"
+                }
+                else{
+                    success_par.innerHTML = "You did it after " + (10-attempts) + " failed attempts";
+                }
+                error_par.style.display = "none";
+                success_par.style.display = "block";
+                
+            }
+            else if(guess_input.value>random_num){
+                error_par.innerHTML = "too big!";
+                success_par.style.display = "none";
+                error_par.style.display = "block";
+                attempts--;
+                lives_span.innerHTML = attempts + "/10";
+            }
+            else if(guess_input.value<random_num){
+                error_par.innerHTML = "too small!";
+                success_par.style.display = "none";
+                error_par.style.display = "block";
+                attempts--;
+                lives_span.innerHTML = attempts + "/10";
+            }
+            if(attempts<=0){
+                document.getElementById('body').style.display = "none";
+                document.getElementById('lose').style.zIndex = 10;
+            }
+        }
+        function tryAgain(){
+            attempts = 10;
+            random_num = Math.floor(Math.random()*100)+1;
+            lives_span.innerHTML = 10;
+            error_par.style.display = "none";
+            success_par.style.display = "none";
+            guess_input.value = null;
+
+            document.getElementById('body').style.display = "flex";
+            document.getElementById('lose').style.zIndex = -2;
+        }
+
+    </script>
+
     </body>
 </html>
