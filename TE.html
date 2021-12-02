@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <video autoplay muted loop id="bg_vid" >
+        <source src="images/31276859_4k-closeup-futuristic-display-of-binary-code-1-s-and-0-s-looping_by_butlerm_preview.mp4" type="video/mp4">
+    </video>
+    <div id="lose">
+        <div id="access_denied">
+            ACCESS DENIED
+        </div>
+        <button id="try_again" onclick="tryAgain()">TRY AGAIN</button>
+    </div>
+    <div id="container">
+        <div id="body">
+            <div id="lives" >
+                <img src="images/danger_red.png">
+                <span id="lives_span">
+                    10/10
+                </span>
+            </div>
+            <span id="danger">
+                DANGER
+            </span>
+            <span id="descr">
+                /* You have 10 attempts to guess the right
+                number in order to hack into te system, or else you'll get 
+                 <span style="font-weight: bold;">CAUGHT */</span>;
+            </span>
+            <span id="hint">
+                /* Hint: the number is between 1 and 100; */
+            </span>
+            <div class="input_div">
+                <input type="text" id="guess_input">
+                <input type="button" id="guess_btn" value="Hack" onclick="guess()">
+            </div>
+            <div class="output_div" id="output_div">
+                <p id="error_par">the number you're looking for is bigger</p>
+                <p id="success_par">you're in!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var input_btn = document.getElementById("guess_input");
+        var message = document.getElementById("output_div");
+        var rand = Math.floor(Math.random()*100);
+
+        function guess(){
+            if(input_btn.value==rand){
+            message.innerHTML = "nta xdid!";
+            }
+            else if(input_btn.value>rand){
+                message.innerHTML = "too big!";
+            }
+            else{
+                message.innerHTML = "too small!";
+            }
+        }
+
+        
+
+
+
+    </script>
+
+    </body>
+</html>
