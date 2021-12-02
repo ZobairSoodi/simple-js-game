@@ -61,7 +61,7 @@ body{
     font-size: 50px;
     color: red;
     margin-bottom: 40px;
-
+    animation: fading 2s cubic-bezier(1, -0.29, 1, 0.43) infinite;
 }
 #descr{
     display: inline-block;
@@ -157,6 +157,9 @@ body{
     }
     50%{
         opacity: 0%;
+    }
+    70%{
+        opacity: 100%;
     }
     100%{
         opacity: 100%;
