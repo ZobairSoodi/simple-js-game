@@ -91,11 +91,10 @@
         function tryAgain(){
             attempts = 10;
             random_num = Math.floor(Math.random()*100)+1;
-            lives_span.innerHTML = 10;
+            lives_span.innerHTML = 10 + "/10";
             error_par.style.display = "none";
             success_par.style.display = "none";
             guess_input.value = null;
-
             document.getElementById('body').style.display = "flex";
             document.getElementById('lose').style.zIndex = -2;
         }
